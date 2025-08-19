@@ -11,9 +11,9 @@ Kleine Ein-Seiten-Website, die zeigt:
 Öffne `script.js` und passe bei Bedarf die Konstanten oben im File an:
 
 ```js
-const PARTNER_NAME = "Philipp";
-const BIRTH_YMD  = [1991, 7, 3];     // Jahr, Monat, Tag
-const COUPLE_YMD = [2009, 8, 28];
+const PARTNER_NAME = "NAME";
+const BIRTH_YMD  = [1990, 1, 1];     // Jahr, Monat, Tag
+const COUPLE_YMD = [2010, 1, 1];
 ```
 
 > Die Berechnung geschieht über reine *Kalendertage* (UTC-Mitternacht), um Off-by-One-Probleme durch Zeitzonen und Sommerzeit zu vermeiden.
@@ -24,7 +24,7 @@ Einfach `index.html` im Browser öffnen.
 
 ## Veröffentlichung mit GitHub Pages (Benutzerseite)
 
-1. Lege auf GitHub ein neues Repository an, dessen Name **`DEINNAME.github.io`** ist. Beispiel: `philipp-schlueter.github.io`.
+1. Lege auf GitHub ein neues Repository an, dessen Name **`DEINNAME.github.io`** ist. Beispiel: `benutzername.github.io`.
 2. Lade die Dateien `index.html`, `style.css`, `script.js` (und optional `README.md`) ins Repo (über Web-UI oder per Git).
 3. Öffne **Settings → Pages** und stelle unter *Build and deployment* „**Deploy from a branch**“, Branch `main`, Ordner `/ (root)` ein. Speichern.
 4. Rufe anschließend `https://DEINNAME.github.io` im Browser auf.

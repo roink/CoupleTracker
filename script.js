@@ -1,8 +1,8 @@
 // Alle Konstanten hier anpassen, falls nötig.
-const PARTNER_NAME = "Philipp";
+const PARTNER_NAME = "NAME";
 // Zivile Daten: Jahr, Monat (1-12), Tag (1-31)
-const BIRTH_YMD = [1991, 7, 3];      // 3. Juli 1991
-const COUPLE_YMD = [2009, 8, 28];    // 28. August 2009
+const BIRTH_YMD = [1990, 1, 1];      // 1. Januar 1990
+const COUPLE_YMD = [2010, 1, 1];    // 1. Januar 2010
 
 // Hilfsfunktionen: Kalendertage-Differenz robust gegen Zeitzonen
 const MS_PER_DAY = 24 * 60 * 60 * 1000;
@@ -61,39 +61,43 @@ function compute() {
 }
 
 function startCountdown(targetDateUTC) {
+  const cdYears = document.getElementById("cd-years");
+  const cdMonths = document.getElementById("cd-months");
   const cdDays = document.getElementById("cd-days");
-  const cdHours = document.getElementById("cd-hours");
-  const cdMins = document.getElementById("cd-mins");
-  const cdSecs = document.getElementById("cd-secs");
+
+  function diffYMD(from, to) {
+    let years = to.getUTCFullYear() - from.getUTCFullYear();
+    let months = to.getUTCMonth() - from.getUTCMonth();
+    let days = to.getUTCDate() - from.getUTCDate();
+
+    if (days < 0) {
+      const prevMonth = new Date(Date.UTC(to.getUTCFullYear(), to.getUTCMonth(), 0));
+      days += prevMonth.getUTCDate();
+      months--;
+    }
+    if (months < 0) {
+      months += 12;
+      years--;
+    }
+    return { years, months, days };
+  }
 
   function tick() {
-    const now = new Date();
-    // Zielzeit als UTC-Mitternacht dieses Tages
-    const targetMs = Date.UTC(targetDateUTC.getUTCFullYear(), targetDateUTC.getUTCMonth(), targetDateUTC.getUTCDate(), 0, 0, 0);
-    const nowMs = now.getTime();
-    let diff = Math.floor((targetMs - nowMs) / 1000); // Sekunden
-
-    if (diff <= 0) {
+    const today = todayUTCDateOnly();
+    if (today >= targetDateUTC) {
+      cdYears.textContent = "0";
+      cdMonths.textContent = "0";
       cdDays.textContent = "0";
-      cdHours.textContent = "0";
-      cdMins.textContent = "0";
-      cdSecs.textContent = "0";
       return;
     }
-
-    const days = Math.floor(diff / (24 * 3600)); diff -= days * 24 * 3600;
-    const hours = Math.floor(diff / 3600); diff -= hours * 3600;
-    const mins = Math.floor(diff / 60); diff -= mins * 60;
-    const secs = diff;
-
+    const { years, months, days } = diffYMD(today, targetDateUTC);
+    cdYears.textContent = formatIntDE(years);
+    cdMonths.textContent = formatIntDE(months);
     cdDays.textContent = formatIntDE(days);
-    cdHours.textContent = hours.toString().padStart(2, "0");
-    cdMins.textContent = mins.toString().padStart(2, "0");
-    cdSecs.textContent = secs.toString().padStart(2, "0");
   }
 
   tick();
-  setInterval(tick, 1000);
+  setInterval(tick, 60 * 60 * 1000);
 }
 
 document.addEventListener("DOMContentLoaded", compute);
