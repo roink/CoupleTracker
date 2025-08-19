@@ -98,4 +98,8 @@ function startCountdown(targetDateUTC) {
   setInterval(tick, 60 * 60 * 1000);
 }
 
-document.addEventListener("DOMContentLoaded", compute);
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", compute);
+} else {
+  compute();
+}
