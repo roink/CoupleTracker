@@ -1,8 +1,8 @@
 // Alle Konstanten hier anpassen, falls nötig.
-const PARTNER_NAME = "NAME";
+const PARTNER_NAME = "Philipp";
 // Zivile Daten: Jahr, Monat (1-12), Tag (1-31)
-const BIRTH_YMD = [1990, 1, 1];      // 1. Januar 1990
-const COUPLE_YMD = [2010, 1, 1];    // 1. Januar 2010
+const BIRTH_YMD = [1991, 7, 3];      // 3. Juli 1991
+const COUPLE_YMD = [2009, 8, 28];    // 28. August 2009
 
 // Hilfsfunktionen: Kalendertage-Differenz robust gegen Zeitzonen
 const MS_PER_DAY = 24 * 60 * 60 * 1000;
@@ -50,8 +50,6 @@ function compute() {
   document.getElementById("daysTogether").textContent = formatIntDE(daysTogether);
   document.getElementById("percentLife").textContent = formatPercentDE(percent);
   document.getElementById("fiftyDate").textContent = formatDateDE(d50);
-  document.getElementById("birthText").textContent = formatDateDE(birth);
-  document.getElementById("coupleText").textContent = formatDateDE(couple);
 
   // Seitentitel mit großer Zahl
   document.title = `Seit ${formatIntDE(daysTogether)} Tagen — Für dich`;
