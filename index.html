@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Seit wie vielen Tagen? — Für dich</title>
+  <meta name="description" content="Kleine Seite, die zeigt, wie lange ihr schon zusammen seid – mit großem Zähler, Prozent deines Lebens und Countdown bis 50%." />
+  <meta property="og:title" content="Seit wie vielen Tagen? — Für dich" />
+  <meta property="og:description" content="Wie lange sind wir zusammen? Prozent deines Lebens und Countdown zum 50%-Datum." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="de_DE" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="page-header">
+    <h1>Für dich</h1>
+    <p class="tagline">Eine kleine Seite, die sich jeden Tag selbst aktualisiert.</p>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <p class="lead">
+        Du bist jetzt seit
+        <span class="big-number" id="daysTogether">—</span>
+        Tagen mit <span id="partnerName">Philipp</span> zusammen.
+      </p>
+      <p class="lead">
+        Das sind
+        <span class="bigger-percent" id="percentLife">—</span>
+        deines Lebens.
+      </p>
+      <p class="small">
+        (Die Zahlen aktualisieren sich automatisch, es werden keine Daten gespeichert.)
+      </p>
+    </section>
+
+    <section class="card grid-two">
+      <div>
+        <h2 class="subtle">50%-Datum</h2>
+        <p class="emphasis" id="fiftyDate">—</p>
+        <p class="small">An diesem Tag hast du die Hälfte deines Lebens als Paar verbracht.</p>
+      </div>
+      <div>
+        <h2 class="subtle">Countdown</h2>
+        <div class="countdown" id="countdown">
+          <div class="cd-item"><span class="cd-num" id="cd-days">—</span><span class="cd-label">Tage</span></div>
+          <div class="cd-item"><span class="cd-num" id="cd-hours">—</span><span class="cd-label">Stunden</span></div>
+          <div class="cd-item"><span class="cd-num" id="cd-mins">—</span><span class="cd-label">Minuten</span></div>
+          <div class="cd-item"><span class="cd-num" id="cd-secs">—</span><span class="cd-label">Sekunden</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <details>
+        <summary>Details &amp; Annahmen</summary>
+        <ul>
+          <li>Geburtstag: <span id="birthText"></span></li>
+          <li>Seit wann zusammen: <span id="coupleText"></span></li>
+          <li>Berechnung der Tage über reine Kalendertage (UTC-Midnight), damit keine Zeitzonen- oder Sommerzeitfehler entstehen.</li>
+        </ul>
+      </details>
+    </section>
+  </main>
+
+  <footer class="page-footer">
+    <p>Erstellt mit Liebe und JavaScript.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
